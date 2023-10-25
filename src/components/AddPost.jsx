@@ -4,31 +4,29 @@ import axios from "axios";
 
 const AddPost = (props) => {
   const [postContent, setPostContent] = useState("");
+  console.log(postContent);
 
-  const addPost = () => {
+  const newPost = (e) => {
+    e.preventDefault();
     axios
       .post("https://akademia108.pl/api/social-app/post/add", {
         content: postContent,
       })
-      .then((res) => {
-        setPostContent("");
-        console.log(setPostContent);
-      });
+      .then((res) => {});
   };
 
   return (
-    <form>
+    <form onSubmit={newPost}>
       <textarea
         className="textareaPost"
-        value={postContent}
+        placeholder="What is happening?!"
         onChange={(e) => {
           setPostContent(e.target.value);
         }}
+        value={postContent}
       ></textarea>
 
-      <button className="btn" onClick={addPost}>
-        Add Post
-      </button>
+      <button className="btn">Add Post</button>
     </form>
   );
 };

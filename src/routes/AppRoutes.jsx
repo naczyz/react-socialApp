@@ -7,7 +7,10 @@ import AppNav from "../components/AppNav";
 const AppRoutes = (props) => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route
+        path="/"
+        element={<Home user={props.user} setUser={props.setUser} />}
+      />
       <Route
         path="/login"
         element={<Login user={props.user} setUser={props.setUser} />}

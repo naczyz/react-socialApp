@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Post.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 const Post = (props) => {
   const [likesCount, setLikesCount] = useState(props.post.likes.length);
 
@@ -17,7 +18,10 @@ const Post = (props) => {
           </div>
         </div>
         <div className="postContent">{props.post.content}</div>
-        <div className="likes">{likesCount}</div>
+        <div className="likes">
+          <FontAwesomeIcon className="pathLikes" icon={faHeart} />
+          {likesCount}  
+        </div>
       </div>
     </div>
   );

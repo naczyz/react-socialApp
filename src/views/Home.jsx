@@ -4,7 +4,7 @@ import axios from "axios";
 import Post from "../components/Post";
 import AddPost from "../components/AddPost";
 
-const Home = () => {
+const Home = (props) => {
   const [posts, setPosts] = useState([]);
 
   const getLatesPost = () => {
@@ -27,13 +27,19 @@ const Home = () => {
       });
   };
 
+  const getPrevPost = () =>{
+    axios.post ("https://akademia108.pl/api/social-app/post/newer-then").then((res)=>{
+
+    })
+  }
+
   useEffect(() => {
     getLatesPost();
   }, []);
 
   return (
     <div className="home">
-      <AddPost /> 
+      <AddPost />
       <div className="postList">
         {posts.map((post) => {
           return <Post key={post.id} post={post} />;
