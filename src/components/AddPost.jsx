@@ -12,7 +12,9 @@ const AddPost = (props) => {
       .post("https://akademia108.pl/api/social-app/post/add", {
         content: postContent,
       })
-      .then((res) => {});
+      .then((res) => {
+        props.getPrevPost();
+      });
   };
 
   return (

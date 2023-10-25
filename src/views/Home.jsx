@@ -27,11 +27,15 @@ const Home = (props) => {
       });
   };
 
-  const getPrevPost = () =>{
-    axios.post ("https://akademia108.pl/api/social-app/post/newer-then").then((res)=>{
-
-    })
-  }
+  const getPrevPost = () => {
+    axios
+      .post("https://akademia108.pl/api/social-app/post/newer-then", {
+        date: posts[0].created_at,
+      })
+      .then((res) => {
+        setPosts(res.data);
+      });
+  };
 
   useEffect(() => {
     getLatesPost();
@@ -39,7 +43,7 @@ const Home = (props) => {
 
   return (
     <div className="home">
-      <AddPost />
+      <AddPost getPrevPost={getPrevPost} />
       <div className="postList">
         {posts.map((post) => {
           return <Post key={post.id} post={post} />;
