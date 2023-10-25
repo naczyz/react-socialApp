@@ -1,0 +1,27 @@
+.mainNav ul {
+  margin-top: 20px;
+  width: 35%;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.mainNav ul li {
+  padding: 15px;
+  display: inline-block;
+}
+
+.mainNav .navHome {
+  color: white;
+  height: 30px;
+}
+
+.mainNav ul li a {
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  padding: 0 25px;
+}
+.mainNav ul li a:hover {
+  color: #00538a;
+  font-weight: 700;
+}
