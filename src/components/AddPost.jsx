@@ -8,12 +8,21 @@ const AddPost = (props) => {
 
   const newPost = (e) => {
     e.preventDefault();
+
+    if (!postContent) {
+      return;
+    }
+
     axios
       .post("https://akademia108.pl/api/social-app/post/add", {
         content: postContent,
       })
       .then((res) => {
+        setPostContent("");
         props.getPrevPost();
+      })
+      .catch((err) => {
+        console.error(err);
       });
   };
 

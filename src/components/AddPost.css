@@ -1,6 +1,7 @@
 .textareaPost {
   margin-top: 20px;
   width: 35%;
+  height: 100px;
   padding: 5px;
   margin: 0 auto;
   display: flex;

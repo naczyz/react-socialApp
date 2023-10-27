@@ -33,20 +33,20 @@ const Home = (props) => {
         date: posts[0].created_at,
       })
       .then((res) => {
-        setPosts(res.data);
+        setPosts(res.data.concat(posts));
       });
   };
 
   useEffect(() => {
     getLatesPost();
-  }, []);
+  }, [props.user]);
 
   return (
     <div className="home">
-      <AddPost getPrevPost={getPrevPost} />
+      {props.user && <AddPost getPrevPost={getPrevPost} />}
       <div className="postList">
         {posts.map((post) => {
-          return <Post key={post.id} post={post} />;
+          return <Post key={post.id} post={post} user={props.user} setPosts={setPosts}/>;
         })}
         <button className="btn loadMore" onClick={getNextPost}>
           Load More

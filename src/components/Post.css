@@ -33,9 +33,37 @@
 }
 .post .likes {
   text-align: right;
+  font-size: 1.2em;
 }
 
 .post .likes .pathLikes {
-  margin-right: 5px;
+  margin-right: 8px;
   color: #00538a;
+  height: 20px;
+}
+
+.likes .btnDelete {
+  margin-right: 5px;
+  font-size: 10px;
+  font-weight: 750;
+  padding: 10px;
+  float: inline-start;
+  margin: 14px 0;
+}
+.deleteConfirmation {
+  position: fixed;
+  background-color: rgb(241, 232, 232);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  color: black;
+}
+.deleteConfirmation .yes {
+  background-color: green;
+  margin-right: 10px;
+}
+.deleteConfirmation .no {
+  background-color: red;
+  margin-left: 10px;
 }
