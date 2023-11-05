@@ -67,3 +67,17 @@
   background-color: red;
   margin-left: 10px;
 }
+
+.likes {
+  color: red;
+
+}
+.likes .likes-dis {
+  display: inline-block;
+  margin-right: 7px;
+  font-weight: bold;
+  color: #00538a;
+
+  font-weight: bold;
+  font-size: 20px;
+}

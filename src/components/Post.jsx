@@ -6,6 +6,10 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 const Post = (props) => {
   const [likesCount, setLikesCount] = useState(props.post.likes.length);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [doesUserLiked, setDoesUserLiked] = useState(
+    props.post.likes.filter((like) => like.username === props.user?.username)
+      .length !== 0
+  );
 
   const deletePost = (id) => {
     axios
@@ -20,6 +24,19 @@ const Post = (props) => {
       })
       .catch((err) => {
         console.error(err);
+      });
+  };
+
+  const likePost = (id, isLiked) => {
+    axios
+      .post(
+        "https://akademia108.pl/api/social-app/post/" +
+          (isLiked ? "dislike" : "like"),
+        { post_id: id }
+      )
+      .then(() => {
+        setLikesCount(likesCount + (isLiked ? -1 : 1));
+        setDoesUserLiked(!isLiked);
       });
   };
 
@@ -48,7 +65,18 @@ const Post = (props) => {
             </button>
           )}
 
-          <FontAwesomeIcon className="pathLikes" icon={faHeart} />
+          
+
+          {props.user && (
+            <div className="likes-dis">
+              <FontAwesomeIcon
+                className="pathLikes"
+                icon={faHeart}
+                onClick={() => likePost(props.post.id, doesUserLiked)}
+              />
+              {doesUserLiked ? "Dislike" : "Like"}
+            </div>
+          )}
           {likesCount}
         </div>
       </div>
