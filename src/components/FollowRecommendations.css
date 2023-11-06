@@ -1,0 +1,21 @@
+.list-recommendations {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  color: #fff;
+}
+
+.list-recommendations ul {
+  list-style: none;
+  padding: 0;
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+}
+
+.list-recommendations li {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+

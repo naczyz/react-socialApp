@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Post from "../components/Post";
 import AddPost from "../components/AddPost";
+import FollowRecommendations from "../components/FollowRecommendations";
 
 const Home = (props) => {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ const Home = (props) => {
       .post("http://akademia108.pl/api/social-app/post/latest")
       .then((res) => {
         setPosts(res.data);
-        console.log(res);
+        // console.log(res);
       });
   };
 
@@ -23,7 +24,7 @@ const Home = (props) => {
       })
       .then((res) => {
         setPosts(posts.concat(res.data));
-        console.log(res.data);
+        // console.log(res.data);
       });
   };
 
@@ -44,9 +45,17 @@ const Home = (props) => {
   return (
     <div className="home">
       {props.user && <AddPost getPrevPost={getPrevPost} />}
+      <FollowRecommendations />
       <div className="postList">
         {posts.map((post) => {
-          return <Post key={post.id} post={post} user={props.user} setPosts={setPosts}/>;
+          return (
+            <Post
+              key={post.id}
+              post={post}
+              user={props.user}
+              setPosts={setPosts}
+            />
+          );
         })}
         <button className="btn loadMore" onClick={getNextPost}>
           Load More

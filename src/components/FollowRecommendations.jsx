@@ -1,0 +1,55 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./FollowRecommendations.css";
+
+const FollowRecommendations = () => {
+  const [recommendations, setRecommendations] = useState([]);
+
+  const getRecommendations = () => {
+    axios
+      .post("https://akademia108.pl/api/social-app/follows/recommendations")
+      .then((res) => {
+        setRecommendations(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    getRecommendations();
+  }, []);
+
+  const follow = (userId) => {
+    console.log("Klikam");
+    axios
+      .post("https://akademia108.pl/api/social-app/follows/follow", {
+        user_id: userId,y
+      })
+      .then((res) => {
+        getRecommendations();
+        console.log("tutaj jestem");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  return (
+    <div className="list-recommendations">
+      <ul>
+        {recommendations.map((user) => (
+          <li key={user.id}>
+            {user.username}
+            <button className="btn" onClick={() => follow(user.id)}>
+              Follow
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default FollowRecommendations;
