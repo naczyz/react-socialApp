@@ -40,12 +40,12 @@ const FollowRecommendations = (props) => {
       <ul>
         {recommendations.map((user) => (
           <li key={user.id}>
-            {user.username}
             <img
               src={user.avatar_url}
               alt={recommendations.username}
               className="avatar-follow"
             />
+            {user.username}
             <button className="btn" onClick={() => follow(user.id)}>
               Follow
             </button>
