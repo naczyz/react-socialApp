@@ -45,7 +45,13 @@ const Home = (props) => {
   return (
     <div className="home">
       {props.user && <AddPost getPrevPost={getPrevPost} />}
-      <FollowRecommendations />
+      {props.user && (
+        <FollowRecommendations
+          user={props.user}
+          posts={posts}
+          getLatesPost={getLatesPost}
+        />
+      )}
       <div className="postList">
         {posts.map((post) => {
           return (
@@ -54,6 +60,7 @@ const Home = (props) => {
               post={post}
               user={props.user}
               setPosts={setPosts}
+              getLatesPost={getLatesPost}
             />
           );
         })}

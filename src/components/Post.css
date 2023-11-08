@@ -70,14 +70,20 @@
 
 .likes {
   color: red;
-
 }
 .likes .likes-dis {
   display: inline-block;
   margin-right: 7px;
   font-weight: bold;
   color: #00538a;
-
   font-weight: bold;
   font-size: 20px;
+  margin-left: 10px;
 }
+
+.btn-unfollow {
+  font-size: 10px;
+  font-weight: 750;
+  padding: 10px;
+}
+

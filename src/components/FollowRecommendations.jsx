@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./FollowRecommendations.css";
 
-const FollowRecommendations = () => {
+const FollowRecommendations = (props) => {
   const [recommendations, setRecommendations] = useState([]);
 
   const getRecommendations = () => {
@@ -19,17 +19,16 @@ const FollowRecommendations = () => {
 
   useEffect(() => {
     getRecommendations();
-  }, []);
+  }, [props.post]);
 
-  const follow = (userId) => {
-    console.log("Klikam");
+  const follow = (id) => {
     axios
       .post("https://akademia108.pl/api/social-app/follows/follow", {
-        user_id: userId,y
+        leader_id: id,
       })
       .then((res) => {
         getRecommendations();
-        console.log("tutaj jestem");
+        props.getLatesPost();
       })
       .catch((err) => {
         console.error(err);
@@ -42,6 +41,11 @@ const FollowRecommendations = () => {
         {recommendations.map((user) => (
           <li key={user.id}>
             {user.username}
+            <img
+              src={user.avatar_url}
+              alt={recommendations.username}
+              className="avatar-follow"
+            />
             <button className="btn" onClick={() => follow(user.id)}>
               Follow
             </button>
