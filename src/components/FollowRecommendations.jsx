@@ -35,6 +35,8 @@ const FollowRecommendations = (props) => {
       });
   };
 
+
+
   return (
     <div className="list-recommendations">
       <ul>
