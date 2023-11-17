@@ -3,7 +3,7 @@ import "./SignUp.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import {toast} from "react-toastify";
+
 
 const SignUp = (props) => {
     const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ const SignUp = (props) => {
     const [signUpMessage, setSignUpMessage] = useState('');
     const [signUpDone, setSignUpDone] = useState(false);
 
-    const validate = () =>{
+    const validate = (props) =>{
         let validationErrors = {
             username: false,
             email:false,
@@ -139,6 +139,7 @@ const SignUp = (props) => {
 
     if (!validate()){
         return
+
     }
         axios
             .post("http://akademia108.pl/api/social-app/user/signup", {
@@ -146,19 +147,23 @@ const SignUp = (props) => {
                 email: formData.email,
                 password: formData.password,
             })
+
             .then((res) =>{
                 console.log(res.data)
 
                 let resData = res.data
 
                 if(resData.signedup){
+
                     setSignUpMessage('Account created')
                     setSignUpDone(true)
+
                 }else{
                     if(resData.message.username){
                         setSignUpMessage(resData.message.username[0])
                     }else if (resData.message.email){
                         setSignUpMessage(resData.message.email[0])
+
                     }
                 }
             })

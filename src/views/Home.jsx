@@ -2,6 +2,7 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Post from "../components/Post";
+import Popup from "./Popup";
 import AddPost from "../components/AddPost";
 import FollowRecommendations from "../components/FollowRecommendations";
 

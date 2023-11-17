@@ -3,6 +3,7 @@ import "./App.css";
 import AppNav from "./components/AppNav";
 import AppRoutes from "./routes/AppRoutes";
 import axios from "axios";
+import Popup from "./views/Popup";
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -12,8 +13,10 @@ function App() {
 
   return (
     <div className="App">
+        <Popup user={user} setUser={setUser} />
       <AppNav user={user} setUser={setUser} />
       <AppRoutes user={user} setUser={setUser} />
+
     </div>
   );
 }
